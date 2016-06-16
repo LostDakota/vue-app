@@ -1,0 +1,75 @@
+body{
+  margin:0;
+  background-color:#DDD;
+  font-size:5vw;
+  font-family:'Open Sans',sans-serif;
+}
+#navigation{
+  background-color:#000;
+  z-index:5;
+  color:#FFF;
+  width:100vw;
+  font-size:1rem;
+  position:fixed;
+}
+#navigation h1{
+  float:left;
+  margin-left:1rem;
+}
+#navigation i{
+  margin-right:5vw;
+}
+#menuSpacer{
+  height:1px;
+  width:50vw;
+}
+.card{
+  max-width:500px;
+  width:80vw;
+  background-color:#FFF;
+  box-shadow:0 1px 5px #BBB;
+  padding:1rem;
+  margin:0 auto 1rem auto;
+}
+.card h2{
+  border-bottom:1px solid #333;
+  margin:0;
+  font-size:2rem;
+}
+p{
+  font-size:1rem;
+}
+#menu{
+  width:75vw;
+  left:-75vw;
+  background-color:#333;
+  top:0;
+  position:fixed;
+  z-index:10;
+  transition:1s;
+  height:100vh;
+  padding-top:10vh;
+}
+#menu li{
+  border-bottom:1px solid #DDD;
+  color:#DDD;
+  width:90%;
+}
+a{
+  text-decoration:none;
+  color:#DDD;
+}
+#shade{
+  position:fixed;
+  opacity:.5;
+  top:0;
+  width:100vw;
+  height:100vh;
+  z-index:2;
+  background-color:#AAA;
+  display:none;
+}
+input{
+  width:80vw;
+  margin:0 auto 0 auto;
+}

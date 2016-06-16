@@ -1,0 +1,12 @@
+extends ./home.pug
+
+block title
+  |Create Post
+
+block content
+  .card
+    h2= status.title
+    p= status.content
+
+  script(type='text/javascript').
+    console.log(status)

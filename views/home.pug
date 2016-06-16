@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+  head
+    title Express
+    link(rel="stylesheet",href="css/style.css")
+    link(rel="stylesheet",href="css/font-awesome/css/font-awesome.min.css")
+    link(rel="stylesheet",href="https://fonts.googleapis.com/css?family=Open+Sans:300")
+  body
+    #navigation
+      h1
+        i(class="fa fa-bars")
+        block title
+          |Knowledge Base
+    #menuSpacer
+    #menu
+      ul
+        li
+          a(href="/") Home
+        li
+          a(href="/create") Create Post
+    #shade
+    block content
+      each user in users
+        .card
+          h2= user.name
+          p= user.company.catchPhrase
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
+    script(src="js/script.js")

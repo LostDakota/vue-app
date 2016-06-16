@@ -1,0 +1,15 @@
+extends ./home.pug
+
+block title
+  |Create Post
+
+block content
+  form(name="newpost",action="/create",method="post")
+      key Title
+      br
+      input(type="text",name="title")
+      br
+      key Body
+      br
+      input(type="text",name="content")
+      input(type="submit",value="Post")
