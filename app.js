@@ -20,19 +20,36 @@ app.use(bodyParser.urlencoded({
 }));
 
 //SQL STUFF
-var connection = sql.createConnection({
-  host     : 'localhost',
-  user     : 'user',
-  password : 'password',
-  database : 'database'
-});
+var config = {
+  host:'localhost',
+  user:'user',
+  password:'password',
+  database:'dm_Posts',
+  connectionLimit:15,
+  queueLimit:30,
+  acquireTimeout:1000000
+}
 
-connection.connect(function(err){
-  if(!err)
-    console.log('Connection successful');
-  else
-    console.log('Error making connection - ' + err);
-});
+var pool = sql.createPool(config);
+
+pool.getConnection(function(err,connection){
+  if(err)
+    console.log(err);
+})
+
+// var connection = sql.createConnection({
+//   host     : 'localhost',
+//   user     : 'user',
+//   password : 'password',
+//   database : 'database'
+// });
+
+// connection.connect(function(err){
+//   if(!err)
+//     console.log('Connection successful');
+//   else
+//     console.log('Error making connection - ' + err);
+// });
 
 app.get('/',function(req,res){
   connection.query('SELECT * from dm_Posts', function(err, rows, fields){
