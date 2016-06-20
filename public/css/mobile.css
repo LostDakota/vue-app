@@ -9,12 +9,13 @@ body{
   z-index:5;
   color:#FFF;
   width:100vw;
+  font-size:1rem;
   position:fixed;
 }
 #navigation h1{
   float:left;
-  margin-left:2rem;
-  font-size:2rem;
+  margin-left:3rem;
+  font-size:4rem;
 }
 #navigation i{
   margin-right:5vw;
@@ -24,8 +25,7 @@ body{
   width:50vw;
 }
 .card{
-  max-width:600px;
-  width:90vw;
+  width:95vw;
   background-color:#FFF;
   box-shadow:0 1px 5px #BBB;
   padding:1rem;
@@ -34,17 +34,17 @@ body{
 .card h2{
   border-bottom:1px solid #333;
   margin:0;
-  font-size:1rem;
+  font-size:2rem;
 }
 h4{
+  float:right;
   font-size:.5rem;
-  margin:10px 0 0;
 }
 p{
   font-size:1rem;
 }
 #menu{
-  width:60vw;
+  width:75vw;
   left:-75vw;
   background-color:#333;
   top:0;
@@ -54,11 +54,10 @@ p{
   height:100vh;
   padding-top:10vh;
 }
-li{
+#menu li{
   border-bottom:1px solid #DDD;
   color:#DDD;
   width:90%;
-  font-size:1.5rem;
 }
 a{
   text-decoration:none;
@@ -74,33 +73,7 @@ a{
   background-color:#AAA;
   display:none;
 }
-input[type=text]{
-  width:100%;
-  font-size:1rem;
-  margin:0;
-}
-label{
-  font-size:1.5rem;
-  margin:0;
-}
-.tag{
-  float:right;
-  border:1px solid #DDD;
-  width:10vw;
-  padding:.5rem;
-}
-form{
-  margin:0;
-  padding:0;
-}
-.deletePost{
-  float:right;
-  font-size:0px;
-}
-.removeFormSpace{
-  font-size:0px;
-}
-.delPost{
-  border:none;
-  background-color:transparent;
+input{
+  width:80vw;
+  margin:0 auto 0 auto;
 }

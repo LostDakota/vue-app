@@ -3,7 +3,7 @@ var pug        = require('pug');
 var morgan     = require('morgan');
 var bodyParser = require('body-parser');
 var request    = require('request');
-var sql        = require('mssql');
+var sql        = require('mysql');
 var app        = express();
 
 const PORT     = 3333;
@@ -20,31 +20,49 @@ app.use(bodyParser.urlencoded({
 }));
 
 //SQL STUFF
-function getPosts() {
-  sql.connect("mssql://dmika:Thisismypassword!@localhost/SQLEXPRESS/Node").then(function(){
-    new sql.Request().query('select * from dm_Posts').then(function(recordset){
-      posts = recordset;
-    }).catch(function(err){
-      console.log("Something happened... ",err);
-    })
-  })
-}
+var connection = sql.createConnection({
+  host     : 'localhost',
+  user     : 'user',
+  password : 'password',
+  database : 'database'
+});
+
+connection.connect(function(err){
+  if(!err)
+    console.log('Connection successful');
+  else
+    console.log('Error making connection - ' + err);
+});
 
 app.get('/',function(req,res){
-  request('http://jsonplaceholder.typicode.com/users',function(error,response,body){
-    if(!error && response.statusCode == 200){
-      users = JSON.parse(body);
-      res.render('home.pug',{"users": users});
-    }
-  })
+  connection.query('SELECT * from dm_Posts', function(err, rows, fields){
+    posts = rows;
+    res.render('home.pug',{"posts": posts});
+  });
 });
 
 app.get('/create',function(req,res){
   res.render('create.pug');
 })
 
+app.get('/login',function(req,res){
+  res.render('login.pug');
+})
+
 app.post('/create',function(req,res){
-  res.render('bounce.pug',{"status":req.body});
+  connection.query('INSERT INTO dm_Posts (title,post) VALUE (?,?)',[req.body.title,req.body.content],
+  function(err,result){
+    res.redirect('/');
+    res.end();
+  });
+})
+
+app.post('/delete',function(req,res){
+  connection.query('DELETE FROM dm_Posts WHERE id=?',[req.body.postId],
+  function(err,result){
+    res.redirect('/');
+    res.end();
+  })
 })
 
 app.get('/query',function(req,res){

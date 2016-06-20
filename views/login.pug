@@ -1,17 +1,17 @@
 extends ./home.pug
 
 block title
-  |Create Post
+  |Log In
 
 block content
  .card
-  form(name="newpost",action="/create",method="post")
+  form(name="newpost",action="/auth",method="post")
       div(class="removeFormSpace")
-        label(for="title") Title
+        label(for="user") User Name
       div(class="removeFormSpace")
-        input(type="text",name="title")
+        input(type="text",name="user")
       div(class="removeFormSpace")
-        label(for="content") Body
+        label(for="password") Password
       div(class="removeFormSpace")
-        input(type="text",name="content")
+        input(type="text",name="password")
       input(type="submit",value="Post")

@@ -5,6 +5,7 @@ html(lang="en")
     link(rel="stylesheet",href="css/style.css")
     link(rel="stylesheet",href="css/font-awesome/css/font-awesome.min.css")
     link(rel="stylesheet",href="https://fonts.googleapis.com/css?family=Open+Sans:300")
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
   body
     #navigation
       h1
@@ -18,11 +19,18 @@ html(lang="en")
           a(href="/") Home
         li
           a(href="/create") Create Post
+        li
+          a(href="/login") Log In
     #shade
     block content
-      each user in users
-        .card
-          h2= user.name
-          p= user.company.catchPhrase
+      each post in posts
+       .card
+          form(action="/delete",method="post",class="deletePost")
+            div(style="display:none")
+              input(type="hidden",name="postId",value=post.id)
+            input(type="submit",value="X",class="delPost")
+          h2= post.title
+          h4= post.postDate
+          p= post.post
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
     script(src="js/script.js")
